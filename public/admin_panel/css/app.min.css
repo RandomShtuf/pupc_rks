@@ -449,7 +449,7 @@ body[data-layout="horizontal"] .footer {
 #sidebar-menu ul li a {
     display: block;
     padding: 0.625rem 1.5rem;
-    color: #800000;
+    color: #000000;
     position: relative;
     font-size: 13.3px;
     -webkit-transition: all 0.4s;
@@ -464,19 +464,17 @@ body[data-layout="horizontal"] .footer {
     font-size: 1.1rem;
     line-height: 1.40625rem;
     vertical-align: middle;
-    color: #800000;
+    color: #000000;
     -webkit-transition: all 0.4s;
     transition: all 0.4s;
     opacity: 0.75;
 }
 #sidebar-menu ul li a:hover {
-    color: #ffffff;
-    background-color: rgba(128, 0, 0, 0.4)
-    ;
+    color: #800000;
+    border-bottom: 1px solid rgba(128, 0, 0, 1);
 }
 #sidebar-menu ul li a:hover i {
-    color: #ffffff;
-    background-color: rgba(128, 0, 0, 0.4);
+    color: #800000;
 }
 #sidebar-menu ul li .badge {
     margin-top: 4px;
@@ -503,35 +501,30 @@ body[data-layout="horizontal"] .footer {
     cursor: default;
     font-size: 11px;
     text-transform: uppercase;
-    color: #800000;
+    color: #000000;
     font-weight: 600;
     font-family: Inter, sans-serif;
     opacity: 0.5;
 }
 .mm-active {
-    color: #ffffff !important;
-    background-color: #800000;
+    color: #800000 !important;
+    border-bottom: 1px #800000;
 }
 
 .mm-active > a {
-    color: #ffffff !important;
-    background-color: #800000;
+    color: #800000 !important;
 }
 .mm-active > a i {
-    color: #ffffff !important;
-    background-color: #800000;
+    color: #800000 !important;
 }
 .mm-active > i {
-    color: #ffffff !important;
-    background-color: #800000;
+    color: #800000 !important;
 }
 .mm-active .active {
-    color: #ffffff !important;
-    background-color: #800000;
+    color: #800000 !important;
 }
 .mm-active .active i {
-    color: #ffffff !important;
-    background-color: #800000;
+    color: #800000 !important;
 }
 @media (max-width: 992px) {
     .vertical-menu {
@@ -1264,12 +1257,12 @@ body[data-layout="horizontal"][data-layout-size="boxed"] .navbar-header {
     pointer-events: none;
 }
 .waves-effect.waves-light .waves-ripple {
-    background: rgba(255, 255, 255, 0.4);
+    background: rgba(218, 165, 32, 0.4);
     background: radial-gradient(
-        rgba(255, 255, 255, 0.2) 0,
-        rgba(255, 255, 255, 0.3) 40%,
-        rgba(255, 255, 255, 0.4) 50%,
-        rgba(255, 255, 255, 0.5) 60%,
+        rgba(218, 165, 32, 0.2) 0,
+        rgba(218, 165, 32, 0.4) 40%,
+        rrgba(218, 165, 32, 0.4) 50%,
+        rgba(218, 165, 32, 0.4) 60%,
         rgba(255, 255, 255, 0) 70%
     );
 }
@@ -1349,7 +1342,7 @@ body[data-layout="horizontal"][data-layout-size="boxed"] .navbar-header {
     display: block;
 }
 .waves-effect.waves-light .waves-ripple {
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(218, 165, 32, 0.4);
 }
 .waves-effect.waves-primary .waves-ripple {
     background-color: rgba(15, 156, 243, 0.4);

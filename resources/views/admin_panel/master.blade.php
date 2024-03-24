@@ -120,10 +120,11 @@
     <!-- App js -->
     <script src="{{ asset('admin_panel/js/app.js') }}"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="{{asset('admin_panel/libs/dropzone/min/dropzone.min.js')}}"></script>
+    <input type="file" multiple="multiple" class="dz-hidden-input" style="visibility: hidden; position: absolute; top: 0px; left: 0px; height: 0px; width: 0px;">
 
     <script type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/js/bootstrap-select.min.js"> </script>
-
     <script>
         @if(Session::has('message'))
         var type = "{{ Session::get('alert-type','info') }}"
