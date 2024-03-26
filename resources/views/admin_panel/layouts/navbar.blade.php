@@ -15,13 +15,7 @@
                         <span>Dashboard</span>
                     </a>
                 </li>
-                <li>
-                    <a href="{{route('component.index')}}" class="waves-effect">
-                        <i class="ri-dashboard-fill "></i>
-                        {{-- <span class="badge rounded-pill bg-success float-end">3</span> --}}
-                        <span>Components</span>
-                    </a>
-                </li>
+
                 <li class="">
                     <a href="{{route('process.index')}}" class=" waves-effect">
                         <i class="fas fa-cogs"></i>

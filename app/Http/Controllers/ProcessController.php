@@ -23,7 +23,7 @@ class ProcessController extends Controller
     {
         $process = Process::find($id);
         $processes = Process::all();
-        $sections = Section::all();
+        $sections = Section::with('process')->where('process_id', $id)->get();
 
         return view('admin_panel.sections.index', compact('process', 'sections', 'processes'));
     }
@@ -33,7 +33,7 @@ class ProcessController extends Controller
         $process = Process::find($processId);
         $section = Section::find($sectionId);
         $sections = Section::all();
-        $subjects = Subject::all();
+        $subjects = Subject::with('section')->where('section_id', $sectionId)->get();
 
         return view('admin_panel.subjects.index', compact('process', 'section', 'sections', 'subjects'));
     }
@@ -45,7 +45,19 @@ class ProcessController extends Controller
         $subject = Subject::find($subjectId);
         $sections = Section::all();
         $subjects = Subject::all();
-        $records = Record::all();
+        $records = Record::with('process', 'section', 'subject')->where('process_id', $processId)->where('section_id', $sectionId)->where('subject_id', $subjectId)->get();
+
+        return view('admin_panel.records.index', compact('process', 'section', 'subject', 'sections', 'subjects', 'records'));
+    }
+
+    public function viewRecord($processId, $sectionId, $subjectId)
+    {
+        $process = Process::find($processId);
+        $section = Section::find($sectionId);
+        $subject = Subject::find($subjectId);
+        $sections = Section::all();
+        $subjects = Subject::all();
+        $records = Record::with('process', 'section', 'subject')->where('process_id', $processId)->where('section_id', $sectionId)->where('subject_id', $subjectId)->get();
 
         return view('admin_panel.records.index', compact('process', 'section', 'subject', 'sections', 'subjects', 'records'));
     }

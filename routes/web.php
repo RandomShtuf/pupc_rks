@@ -14,26 +14,37 @@ use App\Http\Controllers\RecordController;
 //     return view('welcome');
 // });
 
+// home page //
+
+//Route::get('/', function () {
+//return view('welcome');
+//});
+
+//Route::get('/classroommanagement', function (){
+//   return view('classroommangement');
+//});
+//Route::get('/file', function (){
+//    return view('file');
+//});
+
 Route::get('/', [HomepageController::class, 'index'])->name('homepage.index');
+Route::get('/classroommanagement', [HomepageController::class, 'classroom'])->name('classroom.index');
 
 Route::get('/dashboard', function () {
     return view('admin_panel.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/classroom-management', [ClassroomManagementController::class, 'index'])->name('classroom.management');
-
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
 
-Route::middleware(['auth', 'verified'])->group(function () {
     Route::controller(ProcessController::class)->prefix('process')->group(function () {
         Route::resource('process', ProcessController::class);
         Route::get('process/{processId}/sections', [ProcessController::class, 'sections'])->name('section.index');
         Route::get('process/{processId}/sections/{sectionId}/subjects', [ProcessController::class, 'subjects'])->name('subject.index');
         Route::get('process/{processId}/sections/{sectionId}/subjects/{subjectId}/records', [ProcessController::class, 'records'])->name('record.index');
+        // Route::get('process/{processId}/sections/{sectionId}/subjects/{subjectId}/records/{recordId}', [ProcessController::class, 'viewRecord'])->name('record.index');
     });
 
     Route::controller(SectionController::class)->prefix('section')->group(function () {
@@ -46,10 +57,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::controller(RecordController::class)->prefix('record')->group(function () {
         Route::post('record', [RecordController::class, 'store'])->name('record.store');
-    });
-
-    Route::controller(ComponentController::class)->group(function () {
-        Route::resource('component', ComponentController::class);
     });
 });
 

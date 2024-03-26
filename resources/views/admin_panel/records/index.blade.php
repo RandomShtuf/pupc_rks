@@ -70,19 +70,21 @@
                                 @foreach ($records as $record)
                                 <tr data-id="{{ $record->id }}" style="cursor: pointer;">
                                     <td>
-                                        <a href="{{ Storage::url($record->file) }}" target="_blank">{{ $record->file
-                                            }}</a>
+                                        <a href="{{ asset('records/' . $record->file) }}" target="_blank">{{
+                                            $record->file }}</a>
                                     </td>
+
                                     <td>{{ $record->title }}</td>
                                     <td>
                                         <div class="row">
                                             <div class="col-1">
-                                                <a href="{{ Storage::url($record->file) }}" target="_blank">
+                                                <a href="{{ asset('records/' . $record->file) }}"
+                                                    target="_blank">
                                                     <i class="fas fa-eye text-primary"></i>
                                                 </a>
                                             </div>
                                             <div class="col-1">
-                                                <a href="{{ Storage::url($record->file) }}"
+                                                <a href="{{ asset('records/' . $record->file) }}"
                                                     download="{{ $record->file }}">
                                                     <i class="fas fa-download text-primary"></i>
                                                 </a>
@@ -91,6 +93,7 @@
                                     </td>
                                 </tr>
                                 @endforeach
+
                             </tbody>
 
                         </table>

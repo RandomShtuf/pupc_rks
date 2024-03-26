@@ -38,27 +38,22 @@ class RecordController extends Controller
         $title = $request->title;
         $file = $request->file('file');
 
-        // Generate a unique filename
-        $filename = $title . '_' . time() . '.' . $file->getClientOriginalExtension();
+        // Store the file in the 'records' directory with the generated filename
+        // $path = Storage::putFileAs('records', $file, $filename);
 
-        // Store the file in the 'records' directory within the storage/app/public directory
-        $path = $file->storeAs('public/records', $filename);
-
-        // Get the URL for the stored file
-        $url = Storage::url($path);
+        $path = $title . '.' . $request->file->getClientOriginalExtension();
+        $request->file->move(public_path('records'), $path);
 
         $record = new Record();
         $record->process_id = $processId;
         $record->section_id = $sectionId;
         $record->subject_id = $subjectId;
         $record->title = $title;
-        $record->file = $url; // Store the URL instead of the path
+        $record->file = $path;
         $record->save();
 
         return redirect()->back()->with('success', 'Record created successfully.');
     }
-
-
 
     /**
      * Display the specified resource.

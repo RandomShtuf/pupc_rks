@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Process;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +20,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        $processes = Process::all();
+
+        view()->composer('*', function ($view) use ($processes) {
+            $view->with('processes', $processes);
+        });
     }
 }
