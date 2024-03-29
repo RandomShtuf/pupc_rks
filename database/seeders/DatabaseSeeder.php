@@ -21,8 +21,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UserSeeder::class,
             ProcessSeeder::class,
-            SectionSeeder::class,
-            SubjectSeeder::class,
+            // SectionSeeder::class,
+            // SubjectSeeder::class,
         ]);
     }
 }

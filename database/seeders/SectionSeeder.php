@@ -14,7 +14,7 @@ class SectionSeeder extends Seeder
     {
         $sections = [
             [
-                'process_id' => 2,
+                'process_id' => 1,
                 'name' => 'Operation',
             ],
 

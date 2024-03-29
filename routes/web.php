@@ -39,12 +39,16 @@ Route::middleware(['auth'])->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::controller(ProcessController::class)->prefix('process')->group(function () {
+    Route::controller(ProcessController::class)->group(function () {
         Route::resource('process', ProcessController::class);
         Route::get('process/{processId}/sections', [ProcessController::class, 'sections'])->name('section.index');
         Route::get('process/{processId}/sections/{sectionId}/subjects', [ProcessController::class, 'subjects'])->name('subject.index');
         Route::get('process/{processId}/sections/{sectionId}/subjects/{subjectId}/records', [ProcessController::class, 'records'])->name('record.index');
         // Route::get('process/{processId}/sections/{sectionId}/subjects/{subjectId}/records/{recordId}', [ProcessController::class, 'viewRecord'])->name('record.index');
+    });
+
+    Route::controller(SectionController::class)->prefix('section')->group(function () {
+        Route::post('section', [SectionController::class, 'store'])->name('section.store');
     });
 
     Route::controller(SectionController::class)->prefix('section')->group(function () {

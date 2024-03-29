@@ -16,8 +16,8 @@
     <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
 
     <!-- DataTables -->
-    <link href="{{ asset('admin_panel/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}"
-        rel="stylesheet" type="text/css" />
+    <link href="{{ asset('admin_panel/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet"
+        type="text/css" />
     <link href="{{ asset('admin_panel/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css') }}"
         rel="stylesheet" type="text/css" />
     <link href="{{ asset('admin_panel/libs/datatables.net-select-bs4/css//select.bootstrap4.min.css') }}"
@@ -115,13 +115,16 @@
     <!-- wizard js -->
     <script src="{{ asset('admin_panel/libs/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js') }}"></script>
     <script src="{{ asset('admin_panel/libs/twitter-bootstrap-wizard/prettify.js') }}"></script>
+    <script src="{{ asset('admin_panel/libs/tinymce/tinymce.min.js') }}"></script>
     <script src="{{ asset('admin_panel/js/pages/form-wizard.init.js') }}"></script>
+    <script src="{{ asset('admin_panel/js/pages/form-editor.init.js') }}"></script>
 
     <!-- App js -->
     <script src="{{ asset('admin_panel/js/app.js') }}"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="{{asset('admin_panel/libs/dropzone/min/dropzone.min.js')}}"></script>
-    <input type="file" multiple="multiple" class="dz-hidden-input" style="visibility: hidden; position: absolute; top: 0px; left: 0px; height: 0px; width: 0px;">
+    <input type="file" multiple="multiple" class="dz-hidden-input"
+        style="visibility: hidden; position: absolute; top: 0px; left: 0px; height: 0px; width: 0px;">
 
     <script type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/js/bootstrap-select.min.js"> </script>

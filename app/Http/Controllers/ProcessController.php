@@ -50,18 +50,6 @@ class ProcessController extends Controller
         return view('admin_panel.records.index', compact('process', 'section', 'subject', 'sections', 'subjects', 'records'));
     }
 
-    public function viewRecord($processId, $sectionId, $subjectId)
-    {
-        $process = Process::find($processId);
-        $section = Section::find($sectionId);
-        $subject = Subject::find($subjectId);
-        $sections = Section::all();
-        $subjects = Subject::all();
-        $records = Record::with('process', 'section', 'subject')->where('process_id', $processId)->where('section_id', $sectionId)->where('subject_id', $subjectId)->get();
-
-        return view('admin_panel.records.index', compact('process', 'section', 'subject', 'sections', 'subjects', 'records'));
-    }
-
     /**
      * Show the form for creating a new resource.
      */
@@ -75,19 +63,21 @@ class ProcessController extends Controller
      */
     public function store(Request $request)
     {
-        $name = $request->input('name');
+        $title = $request->input('title');
+        $description = $request->input('description');
 
-        // Check if a process with the same name already exists
-        $existingProcess = Process::where('name', $name)->first();
+        // Check if a process with the same title already exists
+        $existingProcess = Process::where('title', $title)->first();
 
         if ($existingProcess) {
             // Redirect back with an error message or handle the duplication as needed
-            return redirect()->back()->with('error', 'Process with this name already exists.');
+            return redirect()->back()->with('error', 'Process with this title already exists.');
         }
 
         // If no duplicate found, proceed to save
         $process = new Process();
-        $process->name = $name;
+        $process->title = $title;
+        $process->description = $description;
         $process->save();
 
         return redirect()->back()->with('success', 'Process added successfully.');

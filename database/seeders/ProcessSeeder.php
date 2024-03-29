@@ -14,11 +14,10 @@ class ProcessSeeder extends Seeder
     {
         $processes = [
             [
-                'name' => 'Student Process',
+                'title' => 'Curriculum Design and Development',
+                'description' => 'PURPOSE OF CURRICULUM DESIGN AND DEVELOPMENT',
             ],
-            [
-                'name' => 'Academic Process',
-            ],
+
         ];
 
         foreach ($processes as $process) {

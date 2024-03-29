@@ -6,21 +6,37 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
+
     public function up(): void
     {
         Schema::create('processes', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
+            $table->string('title')->nullable();
+            $table->string('description')->nullable();
+            $table->timestamps();
+        });
+
+
+        Schema::create('process_steps', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('process_id')->constrained()->onDelete('cascade');
+            $table->string('title')->nullable();
+            $table->string('description')->nullable();
+            $table->timestamps();
+        });
+
+        Schema::create('process_step_attachments', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('process_step_id')->constrained()->onDelete('cascade');
+            $table->string('title')->nullable();
+            $table->string('description')->nullable();
+            $table->string('course')->nullable();
+            $table->string('file')->nullable();
+            $table->string('note')->nullable();
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('processes');
