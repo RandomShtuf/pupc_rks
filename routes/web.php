@@ -1,14 +1,17 @@
 <?php
 
+use App\Http\Controllers\AttachmentController;
+use App\Models\ProcessStep;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RecordController;
 use App\Http\Controllers\ProcessController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\ComponentController;
+use App\Http\Controllers\ProcessStepController;
 use App\Http\Controllers\ClassroomManagementController;
-use App\Http\Controllers\RecordController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -39,16 +42,27 @@ Route::middleware(['auth'])->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+    Route::controller(ComponentController::class)->group(function () {
+        Route::resource('component', ComponentController::class);
+        Route::get('component/process/{processId}/steps', [ComponentController::class, 'steps'])->name('component.step');
+        Route::get('process/{processId}/sections/{sectionId}/subjects', [ComponentController::class, 'subjects'])->name('subject.index');
+        Route::get('process/{processId}/sections/{sectionId}/subjects/{subjectId}/records', [ComponentController::class, 'records'])->name('record.index');
+    });
+
     Route::controller(ProcessController::class)->group(function () {
         Route::resource('process', ProcessController::class);
         Route::get('process/{processId}/sections', [ProcessController::class, 'sections'])->name('section.index');
         Route::get('process/{processId}/sections/{sectionId}/subjects', [ProcessController::class, 'subjects'])->name('subject.index');
         Route::get('process/{processId}/sections/{sectionId}/subjects/{subjectId}/records', [ProcessController::class, 'records'])->name('record.index');
-        // Route::get('process/{processId}/sections/{sectionId}/subjects/{subjectId}/records/{recordId}', [ProcessController::class, 'viewRecord'])->name('record.index');
     });
 
-    Route::controller(SectionController::class)->prefix('section')->group(function () {
-        Route::post('section', [SectionController::class, 'store'])->name('section.store');
+    Route::controller(ProcessStepController::class)->group(function () {
+        Route::get('process/{id}/steps', [ProcessStepController::class, 'index'])->name('step.index');
+        Route::post('step', [ProcessStepController::class, 'store'])->name('step.store');
+    });
+
+    Route::controller(AttachmentController::class)->group(function () {
+        Route::post('attachment', [AttachmentController::class, 'store'])->name('attachment.store');
     });
 
     Route::controller(SectionController::class)->prefix('section')->group(function () {

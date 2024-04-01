@@ -40,5 +40,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('processes');
+        Schema::dropIfExists('process_steps');
+        Schema::dropIfExists('process_step_attachments');
     }
 };

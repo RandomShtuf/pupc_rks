@@ -36,6 +36,7 @@
 
     <!-- App Css-->
     <link href="{{ asset('admin_panel/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('admin_panel/libs/twitter-bootstrap-wizard/prettify.css') }}" id="app-style" rel="stylesheet" type="text/css" />
 
     {{-- Toster Css --}}
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">

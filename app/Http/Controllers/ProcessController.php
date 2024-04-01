@@ -16,7 +16,7 @@ class ProcessController extends Controller
     public function index()
     {
         $processes = Process::all();
-        return view('admin_panel.processes.index', compact('processes'));
+        return view('admin_panel.components.processes.index', compact('processes'));
     }
 
     public function sections($id)

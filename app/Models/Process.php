@@ -11,6 +11,11 @@ class Process extends Model
 
     protected $fillable = ['title', 'description'];
 
+    public function steps()
+    {
+        return $this->hasMany(ProcessStep::class);
+    }
+
     public function sections()
     {
         return $this->hasMany(Section::class);
