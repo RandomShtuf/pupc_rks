@@ -20,7 +20,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             UserSeeder::class,
-            // ProcessSeeder::class,
+            ProcessSeeder::class,
+            ProcessStepSeeder::class,
             // SectionSeeder::class,
             // SubjectSeeder::class,
         ]);

@@ -12,7 +12,7 @@ return new class extends Migration
         Schema::create('processes', function (Blueprint $table) {
             $table->id();
             $table->string('title')->nullable();
-            $table->string('description')->nullable();
+            $table->longText('description')->nullable();
             $table->timestamps();
         });
 
@@ -21,7 +21,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('process_id')->constrained()->onDelete('cascade');
             $table->string('title')->nullable();
-            $table->string('description')->nullable();
+            $table->longText('description')->nullable();
             $table->timestamps();
         });
 
@@ -29,10 +29,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('process_step_id')->constrained()->onDelete('cascade');
             $table->string('title')->nullable();
-            $table->string('description')->nullable();
+            $table->longText('description')->nullable();
             $table->string('course')->nullable();
             $table->string('file')->nullable();
-            $table->string('note')->nullable();
+            $table->longText('note')->nullable();
             $table->timestamps();
         });
     }
