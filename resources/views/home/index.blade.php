@@ -9,7 +9,7 @@
 </div>
 {{-- arrow head here --}}
 <div class="image-block" style="width: 100%;">
-    <img src="{{ asset('home/images/iso.png') }}" alt="Classroom Management">
+    <img src="{{ asset('images/iso.png') }}" alt="Classroom Management">
 </div>
 <section class="about-us">
     <div class="about">

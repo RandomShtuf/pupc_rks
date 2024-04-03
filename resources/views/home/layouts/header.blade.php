@@ -7,29 +7,25 @@
             <img src="{{ asset('logo/pup_logo.png') }}" alt="PUP Logo">
         </div>
         <ul class="nav-links">
-            <li><a href="#">Home</a></li>
+            <li><a href="/">Home</a></li>
             <li class="dropdown">
                 <a href="#">About PUP-Calauan <i class="fas fa-chevron-down" style="margin-left: 5px;"></i></a>
                 <ul class="dropdown-menu">
-                    <li><a href="#" style="color: rgb(0, 0, 0);">Vision & Mission</a></li>
-                    <li><a href="#" style="color: rgb(0, 0, 0);">Administration</a></li>
-                    <li><a href="#" style="color: rgb(0, 0, 0);">School Events</a></li>
+                  <li><a href="#" style="color: rgb(0, 0, 0);">Vision & Mission</a></li>
+                  <li><a href="#" style="color: rgb(0, 0, 0);">Administration</a></li>
+                  <li><a href="#" style="color: rgb(0, 0, 0);">School Events</a></li>
                 </ul>
-            </li>
-            <li><a href="#">Student Process </a></li>
-            <li class="dropdown">
-                <a href="#">Academic Process <i class="fas fa-chevron-down" style="margin-left: 5px;"></i></a>
+              </li>
+              <li class="dropdown">
+                <a href="#">Academic ISO  <i class="fas fa-chevron-down" style="margin-left: 5px;"></i></a>
                 <ul class="dropdown-menu">
-                    <li><a href="{{route('classroom.index')}}" style="color: rgb(0, 0, 0);">Class Room
-                            Management</a></li>
-                    <li><a href="#" style="color: rgb(0, 0, 0);">Curriculum</a></li>
-                    <li><a href="#" style="color: rgb(0, 0, 0);">Documents</a></li>
+                  <li><a href="{{route('home.processes')}}" style="color: rgb(0, 0, 0);">Curriculum</a></li>
+                  <li><a href="{{url("/")}}" style="color: rgb(0, 0, 0);">Student process</a></li>
+                  <li><a href="#" style="color: rgb(0, 0, 0);">Others</a></li>
                 </ul>
-            </li>
-
-
-
-        </ul>
+              </li>
+              <li><a href="/">Archive</a></li>
+            </ul>
     </div>
 </div>
 

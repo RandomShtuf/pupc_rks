@@ -77,6 +77,23 @@ class ProcessStepSeeder extends Seeder
                  the documents to the members of the UCEC for review and comment or enhancement in preparation
                  for the deliberation.'
             ],
+
+            [
+                'process_id' => 1,
+                'title' => 'Convene University Curriculum Evaluation Committee (UCEC)',
+                'description' => 'The Dean/Chair of the academic program presents the proposed curriculum to the UCEC.
+                                The UCEC is headed by the VP for Academic Affairs as Chair with all the Deans and Directors
+                                of branches and Campuses, the QAC Director and OUS Executive Director as members deliberate
+                                on the content and technicalo qualities of the proposed curriculum.'
+            ],
+
+
+            [
+                'process_id' => 1,
+                'title' => 'Convene University Curriculum Evaluation Committee for Deliberation and Approval of the Proposed Curriculum',
+                'description' => 'If approved at the UCEC, the Vise President for Academic Affairs through the Quality Assurance Center
+                endorses the proposed curriculum to the Executive Committee for approval.'
+            ],
         ];
 
         foreach ($process_steps as $process_step) {

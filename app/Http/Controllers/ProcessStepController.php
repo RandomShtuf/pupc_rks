@@ -12,7 +12,9 @@ class ProcessStepController extends Controller
     public function index($id)
     {
         $process = Process::find($id);
-        $steps = ProcessStep::with('process')->where('process_id', $id)->get();
+        $steps = ProcessStep::with('process')
+                ->where('process_id', $id)
+                ->get();
         return view('admin_panel.steps.index', compact('process', 'steps'));
     }
 
@@ -27,15 +29,6 @@ class ProcessStepController extends Controller
         $processStep->title = $title;
         $processStep->description = $description;
         $processStep->save();
-
-        // $stepAttachment = new StepAttachment();
-        // $stepAttachment->process_step_id = $processStep->id;
-        // $stepAttachment->title = $title;
-        // $stepAttachment->description = $description;
-        // $stepAttachment->course = $request->course;
-        // $stepAttachment->file = $request->file;
-        // $stepAttachment->note = $request->note;
-        // $stepAttachment->save();
 
         return redirect()->back()->with('success', 'Process step created successfully.');
     }

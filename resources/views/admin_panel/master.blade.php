@@ -105,7 +105,7 @@
     </script>
     <script src="{{ asset('admin_panel/libs/jquery-ui-dist/jquery-ui.min.js') }}"></script>
 
-    <script src="{{ asset('admin_panel/js/pages/dashboard.init.js') }}"></script>
+    {{-- <script src="{{ asset('admin_panel/js/pages/dashboard.init.js') }}"></script> --}}
 
     <!-- Sweet Alerts js -->
     <script src="{{ asset('admin_panel/libs/sweetalert2/sweetalert2.min.js') }}"></script>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Process;
 use Illuminate\Http\Request;
 
 class HomepageController extends Controller
@@ -12,8 +13,15 @@ class HomepageController extends Controller
         return view('home.index');
     }
 
-    public function classroom()
+    public function processes()
     {
-        return view('home.classroommangement');
+        return view('home.processes');
+    }
+
+    public function steps($processId)
+    {
+        $process = Process::find($processId);
+        $processes = Process::all();
+        return view('home.steps');
     }
 }

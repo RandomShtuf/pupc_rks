@@ -33,17 +33,17 @@
 
         {{-- START PAGE TITLE --}}
         <div class="row">
-            <div class="col-12">
+            <div class="col-6">
                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
                     <h4 class="mb-sm-0">
-                       Processes
+                        Processes
                     </h4>
                 </div>
             </div>
         </div>
 
         <div class="row">
-            @foreach ($processes as $process)
+            {{-- @foreach ($processes as $process)
             <div class="col-xl-3">
                 <div class="card">
                     <div class="card-body btn btn-outline-light waves-effect">
@@ -57,7 +57,53 @@
                     </div>
                 </div>
             </div>
-            @endforeach
+            @endforeach --}}
+
+            {{-- PROCESSES --}}
+
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="mb-4 card-title">Processes</h4>
+                        <table id="datatable" class="table table-bordered dt-responsive nowrap"
+                            style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($processes as $process)
+                                <tr data-id="1" style="cursor: pointer;">
+                                    <td>
+                                        <a href="{{ route('component.step', $process->id) }}">
+                                            {{ $process->title }}
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <div class="row">
+                                            <div class="col-1">
+                                                <a data-bs-toggle="modal" data-bs-target="#edit">
+                                                    <i class="fas fa-user-edit text-primary"></i>
+                                                </a>
+                                            </div>
+
+                                            {{-- Delete family_head --}}
+                                            <div class="col">
+                                                <a data-bs-toggle="modal" data-bs-target="#delete">
+                                                    <i class="fas fa-trash text-primary"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

@@ -26,12 +26,13 @@ use App\Http\Controllers\ClassroomManagementController;
 //Route::get('/classroommanagement', function (){
 //   return view('classroommangement');
 //});
-//Route::get('/file', function (){
-//    return view('file');
-//});
+Route::get('/display', function (){
+   return view('display');
+});
 
 Route::get('/', [HomepageController::class, 'index'])->name('homepage.index');
-Route::get('/classroommanagement', [HomepageController::class, 'classroom'])->name('classroom.index');
+Route::get('/processes', [HomepageController::class, 'processes'])->name('home.processes');
+Route::get('/processes/{id}/steps', [HomepageController::class, 'steps'])->name('home.steps');
 
 Route::get('/dashboard', function () {
     return view('admin_panel.index');

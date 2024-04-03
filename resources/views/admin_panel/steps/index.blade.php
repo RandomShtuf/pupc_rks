@@ -20,18 +20,7 @@
         </div>
         @endif
 
-        {{-- START PAGE TITLE --}}
-        <div class="row">
-            <div class="col-12">
-                <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                    <h4 class="mb-sm-0">
-                        Steps
-                    </h4>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
+        {{-- <div class="row">
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
@@ -44,15 +33,15 @@
                                     <a href="#step{{ $step->id }}" class="nav-link{{ $index === 0 ? ' active' : '' }}"
                                         data-toggle="tab">
                                         <span class="step-number">{{ $index + 1 }}</span>
-                                        <span class="step-title">{{ $step->title }}</span>
-                                        <span>{{$step->description}}</span>
+                                        <span class="step-title">{{$step->displayTitle()}}</span>
                                     </a>
                                 </li>
                                 @endforeach
                             </ul>
 
                             <div id="bar" class="mt-4 progress">
-                                <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" style="width: 25%;"></div>
+                                <div class="progress-bar bg-success progress-bar-striped progress-bar-animated"
+                                    style="width: 25%;"></div>
                             </div>
 
                             <div class="tab-content twitter-bs-wizard-tab-content">
@@ -65,16 +54,18 @@
                                         <div class="row">
                                             <div class="col-lg-4">
                                                 <div class="mb-3">
-                                                    <label class="form-label" for="file">File <span class="text-danger">*</span></label>
-                                                    <input name="file" value="{{$step->file}}" type="file" id="file" class="form-control"
-                                                        required>
+                                                    <label class="form-label" for="file">File <span
+                                                            class="text-danger">*</span></label>
+                                                    <input name="file" value="{{$step->file}}" type="file" id="file"
+                                                        class="form-control" required>
                                                 </div>
                                             </div>
 
                                             <div class="col-lg-4">
                                                 <div class="mb-3">
                                                     <label class="form-label" for="title">Title </label>
-                                                    <input name="title" value="{{$step->title}}" type="text" class="form-control" id="title">
+                                                    <input name="title" value="{{$step->title}}" type="text"
+                                                        class="form-control" id="title">
                                                 </div>
                                             </div>
 
@@ -87,7 +78,6 @@
 
                                             <div class="col-lg-4">
                                                 <div class="mb-3">
-                                                    <!-- Additional form fields can be added here -->
                                                 </div>
                                             </div>
 
@@ -95,15 +85,15 @@
                                                 <div class="mb-3">
                                                     <label class="form-label" for="description">Description</label>
                                                     <textarea name="description" class="form-control" id="description"
-                                                        rows="2" ></textarea>
+                                                        rows="2"></textarea>
                                                 </div>
                                             </div>
 
                                             <div class="col-lg-4">
                                                 <div class="mb-3">
                                                     <label class="form-label" for="note">Note</label>
-                                                    <textarea name="note" class="form-control" id="note" rows="2"
-                                                        ></textarea>
+                                                    <textarea name="note" class="form-control" id="note"
+                                                        rows="2"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -123,7 +113,53 @@
                     </div>
                 </div>
             </div>
+        </div> --}}
+
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="mb-4 card-title">Steps</h4>
+                        <div class="leftbar">
+                            @foreach ($steps as $index => $step)
+                            <a href="#step{{ $step->id }}" class="nav-link{{ $index === 0 ? ' active' : '' }}"
+                                onclick="showStep({{ $index }})"> {{ $index + 1 }}. {{$step->displayTitle()}}</a>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-8">
+                <div class="card">
+                    <div class="card-body">
+                        @foreach ($steps as $index => $step)
+                        <div id="rightbar{{ $index }}" class="attachment-section"
+                            style="display:{{ $index === 0 ? 'block' : 'none' }}">
+                            @include('admin_panel.steps.attachment', ['attachments' => $step->attachments])
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
+
+<script>
+    function showStep(index) {
+        var attachmentSections = document.querySelectorAll('.attachment-section');
+        attachmentSections.forEach(function(section) {
+            section.style.display = 'none';
+        });
+
+        var rightBar = document.getElementById('rightbar' + index);
+        if (rightBar) {
+            rightBar.style.display = 'block';
+        }
+    }
+</script>
+
+
 @endsection

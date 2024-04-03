@@ -32,5 +32,6 @@ class AttachmentController extends Controller
         $attachment->save();
 
         return redirect()->back()->with('success', 'Attachment created successfully.');
+        // return redirect()->route('step.show', $step->id)->with('success', 'Attachment created successfully.');
     }
 }
