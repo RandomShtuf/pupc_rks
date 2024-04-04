@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\AttachmentController;
 use App\Models\ProcessStep;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RecordController;
 use App\Http\Controllers\ProcessController;
@@ -10,29 +10,14 @@ use App\Http\Controllers\SectionController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\ComponentController;
+use App\Http\Controllers\AttachmentController;
 use App\Http\Controllers\ProcessStepController;
 use App\Http\Controllers\ClassroomManagementController;
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-// home page //
-
-//Route::get('/', function () {
-//return view('welcome');
-//});
-
-//Route::get('/classroommanagement', function (){
-//   return view('classroommangement');
-//});
-Route::get('/display', function (){
-   return view('display');
-});
 
 Route::get('/', [HomepageController::class, 'index'])->name('homepage.index');
 Route::get('/processes', [HomepageController::class, 'processes'])->name('home.processes');
 Route::get('/processes/{id}/steps', [HomepageController::class, 'steps'])->name('home.steps');
+Route::get('/auditor\'s-page', [HomepageController::class, 'auditorPage'])->name('home.auditor');
 
 Route::get('/dashboard', function () {
     return view('admin_panel.index');
@@ -64,6 +49,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::controller(AttachmentController::class)->group(function () {
         Route::post('attachment', [AttachmentController::class, 'store'])->name('attachment.store');
+        Route::post('/share-attachment', [AttachmentController::class, 'shareAttachment'])->name('share.attachment');
+        Route::get('/attachment/{attachment}', [AttachmentController::class, 'showAttachment'])->name('attachment.show');
     });
 
     Route::controller(SectionController::class)->prefix('section')->group(function () {

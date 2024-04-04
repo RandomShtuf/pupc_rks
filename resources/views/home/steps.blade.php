@@ -96,9 +96,35 @@
                         <i class="fa fa-gift"></i>
                         <strong>STEP {{$step->id}} </strong>
                         <small>{{$step->displayTitle()}}</small>
-
                     </a>
+
                     <ul>
+                        @foreach ($step->attachments as $attachment)
+                        <a href="{{ asset('attachments/' . $attachment->file) }}" target="_blank">{{$attachment->file}}</a>
+                        <ul>
+                            <li><a href="#"><i class="fa fa-globe"></i>{{$attachment->title}}</a>
+                                <ul>
+                                    <li>
+                                        <a href="#" id="student-file-link" class="file-link"><i
+                                                class="fa fa-female"></i>Student file</a>
+                                        <embed src="{{ asset('pdf/test.pdf') }}" type="application/pdf" class="file-preview"
+                                            style="display: none; width: 100%; height: 100%;">
+                                    </li>
+                                    <li>
+                                        <a href="#" id="process-file-link" class="file-link"><i
+                                                class="fa fa-female"></i>Process file</a>
+                                        <embed src="{{ asset('path/to/process_file.pdf') }}" type="application/pdf"
+                                            class="file-preview" style="display: none; width: 100%; height: 100%;">
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        @endforeach
+                    </ul>
+
+
+                    {{-- <ul>
                         <li><a href="#"><i class="fa fa-globe"></i>IMAGE</a>
                             <ul>
                                 <li>
@@ -141,7 +167,7 @@
                                         nihil</a></li>
                             </ul>
                         </li>
-                    </ul>
+                    </ul> --}}
                 </li>
                 @endforeach
 

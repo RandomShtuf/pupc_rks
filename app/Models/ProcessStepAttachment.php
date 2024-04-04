@@ -23,4 +23,10 @@ class ProcessStepAttachment extends Model
     {
         return $this->belongsTo(ProcessStep::class);
     }
+
+    public function attachment()
+    {
+        return $this->belongsTo(AuditorAttachment::class);
+    }
+
 }

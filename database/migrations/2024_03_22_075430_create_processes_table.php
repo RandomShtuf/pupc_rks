@@ -35,6 +35,12 @@ return new class extends Migration
             $table->longText('note')->nullable();
             $table->timestamps();
         });
+
+        Schema::create('auditor_attachments', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('process_step_attachment_id')->constrained()->onDelete('cascade');
+            $table->timestamps();
+        });
     }
 
     public function down(): void

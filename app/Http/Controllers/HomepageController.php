@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Process;
 use Illuminate\Http\Request;
+use App\Models\AuditorAttachment;
 
 class HomepageController extends Controller
 {
@@ -23,5 +24,12 @@ class HomepageController extends Controller
         $process = Process::find($processId);
         $processes = Process::all();
         return view('home.steps');
+    }
+
+    public function auditorPage()
+    {
+        $attachments = AuditorAttachment::all();
+
+        return view('home.auditor', compact('attachments'));
     }
 }
