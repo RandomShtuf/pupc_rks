@@ -1,4 +1,4 @@
-<div class="tab-pane{{ $index === 0 ? ' active' : '' }}" id="step{{ $step->id }}">
+<div class="tab-pane{{ $index === 0 ? ' active' : '' }}"      >
     <h4 class="card-title">{{ $step->title }}</h4>
     <p class="card-title-desc">{{ $step->description }}</p>
 

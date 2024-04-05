@@ -313,6 +313,7 @@
     display: block;
     opacity: 1;
     visibility: visible;
+    border-radius: 5px;
     /*top: 100px;*/
 
     /* == */

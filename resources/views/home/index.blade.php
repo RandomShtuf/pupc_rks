@@ -4,7 +4,7 @@
 
 <div class="title-section">
     <h1>POLYTECHNIC UNIVERSITY OF THE PHILIPPINES</h1>
-    <h2>Calauan Branch</h2>
+    <h2>Calauan Campus</h2>
 </div>
 </div>
 {{-- arrow head here --}}
@@ -13,7 +13,7 @@
 </div>
 <section class="about-us">
     <div class="about">
-        <img src="{{ asset('home/images/queriar.jpg') }}" alt="Classroom Management" class="pic">
+        <img src="{{ asset('home/images/queriar.jpg') }}" alt="Director's image" class="pic">
         <div class="text">
             <h2>Message from the director</h2>
             <h5>Arlene R. Queri & <span>Campus Director</span></h5>

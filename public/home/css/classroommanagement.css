@@ -56,8 +56,13 @@ body, html {
   position: relative; /* Ensure dropdown container has relative positioning */
 }
 
+.dropdown {
+  position: relative; /* Ensure relative positioning for absolute positioning of dropdown */
+  border: 10px solid transparent; /* Add transparent border to increase hover area */
+}
+
 .dropdown-menu {
-  margin-top: 30px;
+  margin-top: 10px; /* Increase margin-top to create space between trigger and dropdown */
   display: none; /* Hide dropdown menu by default */
   position: absolute; /* Position the dropdown menu absolutely */
   top: 100%; /* Position the dropdown menu below the parent */
@@ -66,10 +71,14 @@ body, html {
   padding: 10px; /* Optional: Add padding for better readability */
   border: 1px solid #ccc; /* Optional: Add border for better appearance */
   z-index: 1000; /* Set a high z-index to ensure the dropdown appears over other elements */
-border-radius: 5px;
-font-family: Arial, Helvetica, sans-serif;
-
+  border-radius: 5px;
+  font-family: Arial, Helvetica, sans-serif;
 }
+
+.dropdown:hover .dropdown-menu {
+  display: block; /* Show dropdown menu on hover */
+}
+
 .dropdown-menu li a {
   color: rgb(0, 0, 0) !important; /* Ensure text is always black */
 }
@@ -78,7 +87,7 @@ font-family: Arial, Helvetica, sans-serif;
   display: block; /* Display each list item as a block */
   margin-bottom: 20px; /* Add margin between each list item */
   width: 150px; /* Set the width of each list item */
-  
+
 }
 
 .dropdown-menu li a {
@@ -93,7 +102,7 @@ h1 {
   font-family: Copperplate; /* Specify Copperplate as the preferred font family */
   color: #ffffff;
   text-align: center;
-  
+
 }
 h2{
   font-size:40px;
@@ -141,11 +150,11 @@ h2{
   transition: background-color 0.3s;
 }
 
-  
+
   .header.scroll {
     background-color: #ffffff;
   }
-  
+
   /* Add some padding to the body to prevent content from being overlapped by the fixed header */
   body {
     padding-top: 100px; /* Adjust this value as needed */
@@ -168,7 +177,7 @@ h2{
   object-fit: contain; /* Ensures the entire image fits within the container without distortion */
 }
 
-  
+
     .pup {
     position: fixed;
     top: 0;
@@ -176,7 +185,7 @@ h2{
     width: 100vw;
     height: 100vh;
     z-index: -1;
-  }  
+  }
   .container {
   position: relative;
   height: 100%; /* Ensure the container stretches to fit content */
@@ -239,9 +248,9 @@ body {
 }
 
 .card-list .developer {
-    background-color: #F7DFF5; 
+    background-color: #F7DFF5;
     color: #B22485;
-}   
+}
 
 .card-list .designer {
     background-color: #d1e8ff;
@@ -249,7 +258,7 @@ body {
 }
 
 .card-list .editor {
-    background-color: #d6f8d6; 
+    background-color: #d6f8d6;
     color: #205c20;
 }
 
@@ -276,7 +285,7 @@ body {
 
 .card-list .card-item:hover .arrow  {
     background: #000;
-    color: #fff; 
+    color: #fff;
 }
 
 @media (max-width: 1200px) {

@@ -69,8 +69,6 @@ class AttachmentController extends Controller
         return redirect()->back()->with('success', $message);
     }
 
-
-
     public function showAttachment()
     {
         $attachments = AuditorAttachment::all();

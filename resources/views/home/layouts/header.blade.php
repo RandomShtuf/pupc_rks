@@ -25,6 +25,8 @@
                 </ul>
               </li>
               <li><a href="/">Archive</a></li>
+              <li><a href="dashboard"><i class="fas fa-user"></i> Login</a></li>
+
             </ul>
     </div>
 </div>

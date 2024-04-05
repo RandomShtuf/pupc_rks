@@ -12,7 +12,7 @@
 <div class="card-list" style="background-color: #f0f0f0;">
     @foreach ($processes as $process)
     <a href="{{route('home.steps', $process->id)}}" class="card-item">
-        <img src="{{ asset('img/pdf.png') }}" alt="Classroom Management">
+        <img src="{{ asset('images/pdf.png') }}" alt="Classroom Management">
         <span class="developer">I</span>
         <h3>{{$process->title}}</h3>
         <div class="arrow">
