@@ -53,20 +53,13 @@ class AttachmentController extends Controller
     {
         $processStepAttachmentId = $request->process_step_attachment_id;
 
-        $attachmentData = [
-            'process_step_attachment_id' => $processStepAttachmentId,
-        ];
+        $attachment = New AuditorAttachment();
 
-        // Get the existing attachment or create a new one
-        $existingAttachment = AuditorAttachment::firstOrNew();
+        $attachment->process_step_attachment_id = $processStepAttachmentId;
 
-        // Update the existing attachment with the new attachment data
-        $existingAttachment->fill($attachmentData)->save();
+        $attachment->save();
 
-        // Set the success message
-        $message = $existingAttachment->wasRecentlyCreated ? 'Attachment is shared successfully.' : 'Attachment is updated successfully.';
-
-        return redirect()->back()->with('success', $message);
+        return redirect()->back()->with('success', 'Attachment shared successfully.');
     }
 
     public function showAttachment()

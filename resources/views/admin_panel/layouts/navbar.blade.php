@@ -25,11 +25,26 @@
 
                 <h5 class="menu-title">SETTINGS</h5>
 
-                <li class="">
+                {{-- <li class="">
                     <a href="{{route('component.index')}}" class=" waves-effect">
                         <i class="fas fa-cogs"></i>
                         <span>Components</span>
                     </a>
+                </li> --}}
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect" aria-expanded="true">
+                        <i class=" ri-apps-2-line"></i>
+                        <span>Components</span>
+                    </a>
+                    <ul class="sub-menu mm-collapse mm-show" aria-expanded="false" style="">
+                        <li><a href="{{route('component.index')}}" class=" waves-effect">
+                                <i class="fas fa-cogs"></i>
+                                <span>Processes</span>
+                            </a></li>
+                        <li><a href="email-read.html">
+                                <i class=" ri-numbers-line"></i>Statistics</a></li>
+                    </ul>
                 </li>
             </ul>
         </div>

@@ -5,7 +5,7 @@
             <!-- LOGO -->
             <div class="navbar-brand-box">
                     <span class="logo-sm">
-                        <img src="{{ asset('logo/pup_logo.png') }}" alt="logo-sm" width="70px">
+                        <img src="{{ asset('logo/pup_logo.png') }}" alt="logo-sm" width="50px">
                     </span>
             </div>
 
