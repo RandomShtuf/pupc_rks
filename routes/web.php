@@ -10,6 +10,7 @@ use App\Http\Controllers\SectionController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\ComponentController;
+use App\Http\Controllers\StaticticController;
 use App\Http\Controllers\AttachmentController;
 use App\Http\Controllers\ProcessStepController;
 use App\Http\Controllers\ClassroomManagementController;
@@ -63,6 +64,10 @@ Route::middleware(['auth'])->group(function () {
 
     Route::controller(RecordController::class)->prefix('record')->group(function () {
         Route::post('record', [RecordController::class, 'store'])->name('record.store');
+    });
+
+    Route::controller(StaticticController::class)->group(function () {
+        Route::resource('statistic', StaticticController::class);
     });
 });
 
