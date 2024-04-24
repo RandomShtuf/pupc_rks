@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Statictic;
+use App\Models\Statistic;
 use Illuminate\Http\Request;
 
-class StaticticController extends Controller
+class StatisticController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $statistics = Statistic::all();
+        return view('admin_panel.components.statistics.index', compact('statistics'));
     }
 
     /**
@@ -28,13 +29,17 @@ class StaticticController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $statistic = Statistic::firstOrNew(['name' => $request->name]);
+        $statistic->value = $request->value;
+        $statistic->save();
+
+        return redirect()->route('statistic.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Statictic $statictic)
+    public function show(Statistic $Statistic)
     {
         //
     }
@@ -42,7 +47,7 @@ class StaticticController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Statictic $statictic)
+    public function edit(Statistic $Statistic)
     {
         //
     }
@@ -50,7 +55,7 @@ class StaticticController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Statictic $statictic)
+    public function update(Request $request, Statistic $Statistic)
     {
         //
     }
@@ -58,7 +63,7 @@ class StaticticController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Statictic $statictic)
+    public function destroy(Statistic $Statistic)
     {
         //
     }

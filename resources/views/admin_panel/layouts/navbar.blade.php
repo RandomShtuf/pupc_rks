@@ -42,7 +42,7 @@
                                 <i class="fas fa-cogs"></i>
                                 <span>Processes</span>
                             </a></li>
-                        <li><a href="email-read.html">
+                        <li><a href="{{route('statistic.index')}}">
                                 <i class=" ri-numbers-line"></i>Statistics</a></li>
                     </ul>
                 </li>

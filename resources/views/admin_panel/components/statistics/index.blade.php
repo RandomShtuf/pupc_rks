@@ -29,37 +29,20 @@
             </div>
         </div>
 
-        @include('admin_panel.components.processes.add')
+        @include('admin_panel.components.statistics.add')
 
         {{-- START PAGE TITLE --}}
         <div class="row">
             <div class="col-6">
                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
                     <h4 class="mb-sm-0">
-                        Processes
+                        Statistics
                     </h4>
                 </div>
             </div>
         </div>
 
         <div class="row">
-            {{-- @foreach ($processes as $process)
-            <div class="col-xl-3">
-                <div class="card">
-                    <div class="card-body btn btn-outline-light waves-effect">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <a href="{{route('component.step', ['processId' => $process->id])}}"
-                                class="d-flex align-items-center">
-                                <i class="fas fa-folder font-size-18" style="margin-right: 20px;"></i>
-                                <h6 class="mb-0">{{ $process->title }}</h6>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @endforeach --}}
-
-            {{-- PROCESSES --}}
 
             <div class="col-xl-12">
                 <div class="card">
@@ -68,18 +51,17 @@
                             style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
                                 <tr>
-                                    <th>Title</th>
+                                    <th>Name</th>
+                                    <th>Value</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($processes as $process)
+                                @foreach ($statistics as $statistic)
                                 <tr data-id="1" style="cursor: pointer;">
-                                    <td>
-                                        <a href="{{ route('component.step', $process->id) }}">
-                                            {{ $process->title }}
-                                        </a>
+                                    <td> {{ $statistic->name }}
                                     </td>
+                                    <td>{{$statistic->value}}</td>
                                     <td>
                                         <div class="row">
                                             <div class="col-1">

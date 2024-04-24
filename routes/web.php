@@ -10,7 +10,7 @@ use App\Http\Controllers\SectionController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\ComponentController;
-use App\Http\Controllers\StaticticController;
+use App\Http\Controllers\StatisticController;
 use App\Http\Controllers\AttachmentController;
 use App\Http\Controllers\ProcessStepController;
 use App\Http\Controllers\ClassroomManagementController;
@@ -66,8 +66,8 @@ Route::middleware(['auth'])->group(function () {
         Route::post('record', [RecordController::class, 'store'])->name('record.store');
     });
 
-    Route::controller(StaticticController::class)->group(function () {
-        Route::resource('statistic', StaticticController::class);
+    Route::controller(StatisticController::class)->group(function () {
+        Route::resource('statistic', StatisticController::class);
     });
 });
 
