@@ -62,7 +62,7 @@
     --bs-body-font-weight: 400;
     --bs-body-line-height: 1.5;
     --bs-body-color: #505d69;
-    --bs-body-bg: #eff3f6;
+    --bs-body-bg: #F7FBFF;
 }
 *,
 ::after,
@@ -4865,7 +4865,6 @@ fieldset:disabled .btn {
     word-wrap: break-word;
     background-color: #fff;
     background-clip: border-box;
-    border: 0 solid #f1f5f7;
     border-radius: 0.25rem;
 }
 .card > hr {

@@ -12,9 +12,6 @@ class ProcessStepAttachment extends Model
 
     protected $fillable = [
         'process_step_id',
-        'title',
-        'description',
-        'course',
         'file',
         'note',
     ];

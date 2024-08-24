@@ -25,13 +25,6 @@
 
                 <h5 class="menu-title">SETTINGS</h5>
 
-                {{-- <li class="">
-                    <a href="{{route('component.index')}}" class=" waves-effect">
-                        <i class="fas fa-cogs"></i>
-                        <span>Components</span>
-                    </a>
-                </li> --}}
-
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect" aria-expanded="true">
                         <i class=" ri-apps-2-line"></i>

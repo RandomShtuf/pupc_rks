@@ -60,8 +60,6 @@
 
             @yield('admin')
 
-            @include('admin_panel.layouts.footer')
-
         </div>
 
         {{-- End Main Content --}}

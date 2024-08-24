@@ -14,6 +14,9 @@ class ProcessStep extends Model
         'title',
         'description',
         'process_id',
+        'attachment_title',
+        'attachment_description',
+        'attachment_course',
     ];
 
     public function displayTitle()

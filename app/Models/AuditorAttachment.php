@@ -11,10 +11,17 @@ class AuditorAttachment extends Model
 
     protected $fillable = [
         'process_step_attachment_id',
+        'file',
     ];
 
     public function processStepAttachment()
     {
         return $this->belongsTo(ProcessStepAttachment::class, 'process_step_attachment_id');
     }
+
+    public function displayTitle()
+    {
+        return $this->processStepAttachment->file;
+    }
+
 }

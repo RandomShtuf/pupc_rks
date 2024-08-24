@@ -81,15 +81,15 @@
                                     <td>
                                         <div class="row">
                                             <div class="col-1">
-                                                <a data-bs-toggle="modal" data-bs-target="#edit">
-                                                    <i class="fas fa-user-edit text-primary"></i>
+                                                <a data-bs-toggle="modal" data-bs-target="#edit" class="waves-effect">
+                                                    <i class=" ri-edit-line"></i>
                                                 </a>
                                             </div>
 
                                             {{-- Delete family_head --}}
                                             <div class="col">
-                                                <a data-bs-toggle="modal" data-bs-target="#delete">
-                                                    <i class="fas fa-trash text-primary"></i>
+                                                <a data-bs-toggle="modal" data-bs-target="#delete" class="waves-effect">
+                                                    <i class="ri-delete-bin-7-line"></i>
                                                 </a>
                                             </div>
                                         </div>
