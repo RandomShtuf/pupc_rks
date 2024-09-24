@@ -25,6 +25,16 @@ class AttachmentController extends Controller
         $path = $title . '.' . $request->file->getClientOriginalExtension();
         $request->file->move(public_path('attachments'), $path);
 
+        if (in_array($file->getClientOriginalExtension(), ['doc', 'docx'])) {
+            $domPdfPath = base_path('vendor/dompdf/dompdf');
+            \PhpOffice\PhpWord\Settings::setPdfRendererPath($domPdfPath);
+            \PhpOffice\PhpWord\Settings::setPdfRendererName('DomPDF');
+            $Content = \PhpOffice\PhpWord\IOFactory::load(public_path('attachments/'.$path));
+            $PDFWriter = \PhpOffice\PhpWord\IOFactory::createWriter($Content,'PDF');
+            $path = $title . '.' . '.pdf';
+            $PDFWriter->save(public_path('attachments/'.$path)); 
+        }
+
         $attachmentData = [
             'process_step_id' => $processStepId,
             'title' => $title,
