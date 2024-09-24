@@ -84,7 +84,7 @@
                                                             @foreach($step->attachments as $attachment)
                                                             <li>
                                                                 <a href="javascript:void(0)"
-                                                                    onclick="showAttachment('{{ asset('attachments/' . $attachment->file) }}', '{{ $attachment->file }}')">
+                                                                    onclick="showAttachment('{{ asset('attachments/' . $attachment->file) }}', '{{ $attachment->file }}', 'attachment-preview-{{ $step->id }}')">
                                                                     {{ $attachment->file }}
                                                                 </a>
                                                             </li>
@@ -119,7 +119,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-lg-8">
-                                                <div id="attachment-preview" class="mb-3">
+                                                <div id="attachment-preview-{{ $step->id }}" class="mb-3">
                                                     <!-- Attachment preview will be displayed here -->
                                                 </div>
                                             </div>
@@ -149,8 +149,8 @@
                 }
             }
 
-            function showAttachment(url, fileName) {
-                var attachmentPreview = document.getElementById('attachment-preview');
+            function showAttachment(url, fileName, previewId) {
+                var attachmentPreview = document.getElementById(previewId);
                 if (attachmentPreview) {
                     var extension = fileName.split('.').pop().toLowerCase();
                     if (['jpg', 'jpeg', 'png', 'gif'].includes(extension)) {
@@ -158,7 +158,8 @@
                     } else if (extension === 'pdf') {
                         attachmentPreview.innerHTML = `<embed src="${url}" type="application/pdf" width="100%" height="600px" />`;
                     } else if (['docx', 'doc'].includes(extension)) {
-                        attachmentPreview.innerHTML = `<iframe src="https://view.officeapps.live.com/op/embed.aspx?src=${url}" width="100%" height="600px" frameborder="0"></iframe>`;
+                        attachmentPreview.innerHTML = `<iframe src="https://docs.google.com/gview?url=${encodeURIComponent(url)}&embedded=true" width="100%" height="600px" frameborder="0"></iframe>`;
+                        //attachmentPreview.innerHTML = `<iframe src="https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(url)}" width="100%" height="600px" frameborder="0"></iframe>`;
                     } else {
                         attachmentPreview.innerHTML = `<p>File type not supported for preview.</p>`;
                     }
