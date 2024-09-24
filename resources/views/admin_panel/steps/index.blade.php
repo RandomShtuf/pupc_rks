@@ -137,7 +137,6 @@
 
         <!-- JavaScript to handle attachment preview and dynamic loading -->
         <script>
-            console.log('{{ asset('attachments/' . $attachment->file) }}');
             function showAttachmentSection(stepId) {
                 var sections = document.querySelectorAll('.attachment-section');
                 sections.forEach(section => {
