@@ -31,7 +31,7 @@ class AttachmentController extends Controller
             \PhpOffice\PhpWord\Settings::setPdfRendererName('DomPDF');
             $Content = \PhpOffice\PhpWord\IOFactory::load(public_path('attachments/'.$path));
             $PDFWriter = \PhpOffice\PhpWord\IOFactory::createWriter($Content,'PDF');
-            $path = $title . '.' . '.pdf';
+            $path = $title . '.' . 'pdf';
             $PDFWriter->save(public_path('attachments/'.$path)); 
         }
 
@@ -64,29 +64,30 @@ class AttachmentController extends Controller
 
     public function shareAttachment(Request $request)
     {
-        $process_step_attachment_id = $request->process_step_attachment_id;
+        $process_step_attachment_ids = $request->process_step_attachment_ids;
 
-        // Retrieve the ProcessStepAttachment
-        $processStepAttachment = ProcessStepAttachment::find($process_step_attachment_id);
-        $file = $processStepAttachment->file;
+        if (is_array($process_step_attachment_ids)) {
+            foreach ($process_step_attachment_ids as $process_step_attachment_id) {
+                $processStepAttachment = ProcessStepAttachment::find($process_step_attachment_id);
+                $file = $processStepAttachment->file;
 
-        // Check if an AuditorAttachment with the same process_step_attachment_id exists
-        $existingAttachment = AuditorAttachment::where('file', $file)->first();
-        if ($existingAttachment) {
-            return redirect()->back()->with('error', 'Attachment already shared.');
+                // Check if an AuditorAttachment with the same process_step_attachment_id exists
+                $existingAttachment = AuditorAttachment::where('file', $file)->first();
+                if ($existingAttachment) {
+                    // Skip the already shared attachment
+                    continue;
+                }
+
+                // If no duplicate found, proceed to save
+                $attachment = new AuditorAttachment();
+                $attachment->process_step_attachment_id = $process_step_attachment_id;
+                $attachment->file = $processStepAttachment->file; // Assuming the file path is stored in `file` column of `process_step_attachment`
+                $attachment->save();
+            }
         }
 
-        // If no duplicate found, proceed to save
-        $processStepAttachment = ProcessStepAttachment::findOrFail($process_step_attachment_id);
-
-        $attachment = new AuditorAttachment();
-        $attachment->process_step_attachment_id = $process_step_attachment_id;
-        $attachment->file = $processStepAttachment->file; // Assuming the file path is stored in `file` column of `process_step_attachment`
-        $attachment->save();
-
-        return redirect()->back()->with('success', 'Attachment shared successfully.');
+        return redirect()->back()->with('success', 'Attachments shared successfully.');
     }
-
 
     public function showAttachment()
     {

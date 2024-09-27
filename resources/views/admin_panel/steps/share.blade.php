@@ -15,15 +15,22 @@
                     @csrf
 
                     <div class="row">
-                        @if($step->attachments->isNotEmpty() && $attachment = $step->attachments->first())
-                            <input name="process_step_attachment_id" type="hidden" class="form-control" id="title" value="{{ $attachment->id }}">
+                        @if($step->attachments->isNotEmpty())
+                            @foreach($step->attachments as $attachment)
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="process_step_attachment_ids[]" value="{{ $attachment->id }}" id="attachment{{ $attachment->id }}">
+                                    <label class="form-check-label" for="attachment{{ $attachment->id }}">
+                                        {{ $attachment->file ?? 'Unnamed Attachment' }}
+                                    </label>
+                                </div>
+                            @endforeach
                         @else
-                            <input name="process_step_attachment_id" type="hidden" class="form-control" id="title" value="">
+                            <input name="process_step_attachment_ids[]" type="hidden" class="form-control" value="">
                         @endif
 
                         <div class="col-md-12">
                             <div class="mb-0 position-relative"><br>
-                                <label class="form-label">Are you sure to share this with the auditor?</label>
+                                <label class="form-label">Are you sure to share these with the auditor?</label>
                             </div>
                         </div>
                     </div>
