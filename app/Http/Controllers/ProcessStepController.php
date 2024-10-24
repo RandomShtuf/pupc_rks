@@ -53,4 +53,11 @@ class ProcessStepController extends Controller
         return redirect()->route('step.index', ['id' => $step->process_id])->with('success', 'Step updated successfully.');
     }
 
+    public function destroy($id)
+    {
+        $step = ProcessStep::findOrFail($id);
+        $step->delete();
+
+        return redirect()->back()->with('success', 'Step deleted successfully');
+    }
 }

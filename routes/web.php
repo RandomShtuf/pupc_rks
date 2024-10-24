@@ -48,6 +48,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('process/{id}/steps', [ProcessStepController::class, 'index'])->name('step.index');
         Route::post('step', [ProcessStepController::class, 'store'])->name('step.store');
         Route::put('step/{id}', [ProcessStepController::class, 'update'])->name('step.update');
+        Route::delete('step/{id}', [ProcessStepController::class, 'destroy'])->name('step.destroy');
     });
 
     Route::controller(AttachmentController::class)->group(function () {

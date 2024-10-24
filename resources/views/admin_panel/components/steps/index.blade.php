@@ -76,6 +76,7 @@
                                     </td>
                                 </tr>
                                 @include('admin_panel.components.steps.edit', ['step' => $step])
+                                @include('admin_panel.components.steps.delete', ['step' => $step])
                                 @endforeach
                             </tbody>
                         </table>
