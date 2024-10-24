@@ -102,9 +102,19 @@ class ProcessController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Process $process)
+    public function update($id, Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
+        ]);
+
+        $process = Process::findOrFail($id);
+        $process->title = $request->input('title');
+        $process->description = $request->input('description');
+        $process->save();
+
+        return redirect()->route('process.index', ['id' => $process->process_id])->with('success', 'Process updated successfully.');
     }
 
     /**

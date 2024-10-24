@@ -83,7 +83,7 @@
                                     <td>
                                         <div class="row">
                                             <div class="col-1">
-                                                <a data-bs-toggle="modal" data-bs-target="#edit"  class="waves-effect">
+                                                <a data-bs-toggle="modal" data-bs-target="#editProcess{{ $process->id }}"  class="waves-effect">
                                                     <i class=" ri-edit-line"></i>
                                                 </a>
                                             </div>
@@ -98,6 +98,7 @@
                                         </div>
                                     </td>
                                 </tr>
+                                @include('admin_panel.components.processes.edit', ['process' => $process])
                                 @endforeach
                             </tbody>
                         </table>
@@ -107,4 +108,5 @@
         </div>
     </div>
 </div>
+<script src="{{ asset('js/editProcess.js') }}"></script>
 @endsection
