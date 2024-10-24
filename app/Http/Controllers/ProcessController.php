@@ -120,8 +120,11 @@ class ProcessController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Process $process)
+    public function destroy($id)
     {
-        //
+        $step = Process::findOrFail($id);
+        $step->delete();
+
+        return redirect()->back()->with('success', 'Step deleted successfully');
     }
 }

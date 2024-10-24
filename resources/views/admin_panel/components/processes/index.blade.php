@@ -90,7 +90,7 @@
 
                                             {{-- Delete family_head --}}
                                             <div class="col">
-                                                <a data-bs-toggle="modal" data-bs-target="#delete"  class="waves-effect">
+                                                <a data-bs-toggle="modal" data-bs-target="#delete{{ $process->id }}"  class="waves-effect">
                                                     <i class="ri-delete-bin-7-line"></i>
                                                 </a>
                                             </div>
@@ -99,6 +99,8 @@
                                     </td>
                                 </tr>
                                 @include('admin_panel.components.processes.edit', ['process' => $process])
+                                @include('admin_panel.components.processes.delete', ['process' => $process])
+
                                 @endforeach
                             </tbody>
                         </table>
