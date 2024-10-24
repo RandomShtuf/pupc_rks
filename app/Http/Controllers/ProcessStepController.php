@@ -12,11 +12,16 @@ class ProcessStepController extends Controller
     public function index($id)
     {
         $process = Process::find($id);
+        if (!$process) {
+            return redirect()->route('process.index')->with('error', 'Process not found.');
+        }
+        
         $steps = ProcessStep::with('process')
                 ->where('process_id', $id)
                 ->get();
         return view('admin_panel.steps.index', compact('process', 'steps'));
     }
+
 
     public function store(Request $request)
     {
@@ -33,5 +38,19 @@ class ProcessStepController extends Controller
         return redirect()->back()->with('success', 'Process step created successfully.');
     }
 
+    public function update($id, Request $request)
+    {
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
+        ]);
+
+        $step = ProcessStep::findOrFail($id);
+        $step->title = $request->input('title');
+        $step->description = $request->input('description');
+        $step->save();
+
+        return redirect()->route('step.index', ['id' => $step->process_id])->with('success', 'Step updated successfully.');
+    }
 
 }

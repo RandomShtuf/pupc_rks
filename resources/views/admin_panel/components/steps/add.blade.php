@@ -5,17 +5,15 @@
         <div class="modal-content">
 
             <div class="modal-header">
-                <h5 class="modal-title" id="createUserLabel">
-                    Add Step</h5>
+                <h5 class="modal-title" id="createUserLabel">Add Step</h5>
                 <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
 
-            {{-- {{ route('process.store')}} --}}
-
             <div class="modal-body">
-                <form action="{{ route('step.store')}}" method="POST">
+                @if($process)
+                <form action="{{ route('step.store') }}" method="POST">
                     @csrf
 
                     <div class="row">
@@ -59,6 +57,9 @@
                             id="sa-position">Save</button>
                     </div>
                 </form>
+                @else
+                <div class="alert alert-danger">Process not found.</div>
+                @endif
             </div>
         </div>
     </div>

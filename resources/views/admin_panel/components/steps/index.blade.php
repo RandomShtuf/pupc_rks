@@ -42,23 +42,6 @@
         </div>
 
         <div class="row">
-            {{-- @foreach ($steps as $step)
-            <div class="col-xl-3">
-                <div class="card">
-                    <div class="card-body btn btn-outline-light waves-effect">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <a href="{{route('section.index', ['processId' => $process->id])}}"
-                                class="d-flex align-items-center">
-                                <i class="fas fa-folder font-size-18" style="margin-right: 20px;"></i>
-                                <h6 class="mb-0">{{ $step->title }}</h6>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @endforeach --}}
-
-
             <div class="col-xl-12">
                 <div class="card">
                     <div class="card-body">
@@ -75,26 +58,24 @@
                             <tbody>
                                 @foreach ($steps as $step)
                                 <tr data-id="1" style="cursor: pointer;">
-                                    <td> {{ $step->title }}
-                                    </td>
-                                    <td>{{$step->description}}</td>
+                                    <td> {{ $step->title }} </td>
+                                    <td>{{ $step->description }}</td>
                                     <td>
                                         <div class="row">
                                             <div class="col-1">
-                                                <a data-bs-toggle="modal" data-bs-target="#edit" class="waves-effect">
-                                                    <i class=" ri-edit-line"></i>
+                                                <a data-bs-toggle="modal" data-bs-target="#editStep{{ $step->id }}" class="waves-effect">
+                                                    <i class="ri-edit-line"></i>
                                                 </a>
                                             </div>
-
-                                            {{-- Delete family_head --}}
                                             <div class="col">
-                                                <a data-bs-toggle="modal" data-bs-target="#delete" class="waves-effect">
+                                                <a data-bs-toggle="modal" data-bs-target="#delete{{ $step->id }}" class="waves-effect">
                                                     <i class="ri-delete-bin-7-line"></i>
                                                 </a>
                                             </div>
                                         </div>
                                     </td>
                                 </tr>
+                                @include('admin_panel.components.steps.edit', ['step' => $step])
                                 @endforeach
                             </tbody>
                         </table>
@@ -102,6 +83,8 @@
                 </div>
             </div>
         </div>
+
     </div>
 </div>
+<script src="{{ asset('js/scripts.js') }}"></script>
 @endsection

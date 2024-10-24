@@ -47,6 +47,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::controller(ProcessStepController::class)->group(function () {
         Route::get('process/{id}/steps', [ProcessStepController::class, 'index'])->name('step.index');
         Route::post('step', [ProcessStepController::class, 'store'])->name('step.store');
+        Route::put('step/{id}', [ProcessStepController::class, 'update'])->name('step.update');
     });
 
     Route::controller(AttachmentController::class)->group(function () {
